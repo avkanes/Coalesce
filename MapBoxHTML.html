@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <body link="White">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Raleway:500" rel="stylesheet">
-  <h1>Find Your Voice!</h1>
+  <link href="https://fonts.googleapis.com/css?family=Sarala" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:200" rel="stylesheet">
+  <h1>FIND YOUR VOICE</h1>
   <meta charset='utf-8' />
   <title></title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
   <link rel="stylesheet" type="text/css" href="MapBox.css">
+  <div class="leftcorner">COALESCE</div>
+  <div class="rightcorner"><a href= "https://www.facebook.com/Coalesce-Site-113282052677874/" style= "color: white;"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href= "https://www.instagram.com/coalescesite/" style= "color: white;"><i class="fa fa-instagram" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href= "https://twitter.com/coalescesite?lang=en" style= "color: white;"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
   <style>
-      body { margin:0; padding:5; background-color: #e6ffe6; color: #00C5CD;}
-      h1  {text-align: center; font-family: 'Bungee Shade', cursive; font-size: 90px;}
-      h2  {text-align: center; font-family: 'Raleway',serif; font-size: 40px;}
+      body { margin:0; padding:5; background-color: #00C5CD; color: Black;}
+      h1  {text-align: center; font-family: 'Work Sans', sans-serif; font-size: 90px; color: White; margin-top: 30px;}
+      h2  {text-align: center; font-family: 'Work Sans', sans-serif; font-size: 40px; color: White; margin-top: -60px; }
       #map {position: relative; top:0; bottom:0; width:100%; margin: auto;}
-      table {position: relative; font-family: 'Raleway', serif; font-size:30px; text-align: center; margin:0 auto; align-items: center;}
+      table {position: relative; font-family: 'Work Sans', sans-serif; font-size:30px; text-align: center; margin:0 auto; align-items: center; color: White;}
+      .leftcorner {position: absolute; top:10px; left: 15px; font-family: 'Helvetica Neue', sans-serif, bold; font-size: 20px; color: White;}
+      p {text-align: center; align-items: center; color: White; font-family: 'Work Sans', sans-serif; font-size: 20px;}
+      .rightcorner {position: absolute; top:10px; right: 15px;}
   </style>
 </head>
 <body>
-<h2>click on the stars below to find a protest or rally near you</h2><br>
-<div id='map'style='width: 1200px; height: 500px;'></div><br>
+<h2>click on the icons below to find a protest or rally near you</h2><br>
+<div id='map'style='width: 1500px; height: 500px;'></div><br>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY25vcmRlbiIsImEiOiJjajZmMWRpYTgyaWp1MnhyMHU4bmRlZ2VnIn0.78UnxmlKS-YFmPE7BfgQFA';
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/streets-v10'
 });
-
     // Add a layer showing the places.
     map.on('load', function () {
       map.addLayer({
@@ -583,7 +591,6 @@ style: 'mapbox://styles/mapbox/streets-v10'
             "icon-allow-overlap": true
         }
     });
-
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
     map.on('click', 'places', function (e) {
@@ -606,18 +613,19 @@ map.addControl(new mapboxgl.NavigationControl());
 <div class="key" style="width:100%;">
 <table style="margin: 0 auto;">
   <tr>
-    <td>Star</td><br>
-    <td>Triangle</td>
-    <td>Circle</td>
-    <td>Square</td>
+    <td><i class="fa fa-star" aria-hidden="true"></i></td>
+    <td><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
+    <td><i class="fa fa-circle" aria-hidden="true"></i></td>
+    <td><i class="fa fa-square" aria-hidden="true"></i></td>
   </tr>
   <tr>
-    <td>--Human Rights--</td>
-    <td>--Civil Rights--</td>
-    <td>--Environment--</td>
-    <td>--Other--</td><
+    <td>&nbsp;&nbsp;Human Rights&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;Civil Rights&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;Environment&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;Other&nbsp;&nbsp;</td>
   </tr>
 </table>
-</div>
+</div><br>
+<p><a href= "https://docs.google.com/forms/d/1vbB5N4yH9fsZYnQpQGzIOe9Lg92kvx3kTD3wbUm0sEU" style= "color: white;"><i class="fa fa-google" aria-hidden="true"></i>&nbsp;&nbsp;Don't See Something In Your Area? Add It!</a><p>
 </body>
 </html>
