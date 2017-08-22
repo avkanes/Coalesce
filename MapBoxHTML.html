@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Raleway:500" rel="stylesheet">
+  <h1>Find Your Voice!</h1>
+  <meta charset='utf-8' />
+  <title></title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+  <link rel="stylesheet" type="text/css" href="MapBox.css">
+  <style>
+      body { margin:0; padding:5; background-color: #e6ffe6; color: #00C5CD;}
+      h1  {text-align: center; font-family: 'Bungee Shade', cursive; font-size: 90px;}
+      h2  {text-align: center; font-family: 'Raleway',serif; font-size: 40px;}
+      #map {position: relative; top:0; bottom:0; width:100%; margin: auto;}
+      table {position: relative; font-family: 'Raleway', serif; font-size:30px; text-align: center; margin:0 auto; align-items: center;}
+  </style>
+</head>
+<body>
+<h2>click on the stars below to find a protest or rally near you</h2><br>
+<div id='map'style='width: 1200px; height: 500px;'></div><br>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY25vcmRlbiIsImEiOiJjajZmMWRpYTgyaWp1MnhyMHU4bmRlZ2VnIn0.78UnxmlKS-YFmPE7BfgQFA';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v10'
+});
+
+    // Add a layer showing the places.
+    map.on('load', function () {
+      map.addLayer({
+        "id": "places",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Youth Action March</strong><p>Boston Common- 139 Tremont Street, Boston, Massachusetts 02108 - October 7, 2017 from 12pm - 3pm EST</p>",
+                        "icon": "triangle"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-71.0655, 42.3550]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>She Persisted March and Rally by Project Femme</strong><p>Los Angeles - 12pm to 3pm PT.</p>",
+                        "icon": "triangle"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-118.2529, 34.0486]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Hold My Hand - Peaceful Protest Against Domestic Abuse</strong><p>Stratford, London - September 23, 2017 - 12:30 to 15:30 BST</p>",
+                        "icon": "star"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-0.0003788999999869702, 51.5413204]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Missha Boycott: March Against Violence In Our Communities</strong><p>Chicago, Illinois - Saturday, August 26 from 2pm to 6pm CD</p>",
+                        "icon": "triangle"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.6096857, 41.8097576]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>March of the Mummies - Pregnancy & Maternity Discrimination Walk</strong><p>Trafalgar Square, Westminster, England - October 31, 2017 - 12:00 to 3:30 GMT</p>",
+                        "icon": "triangle"
+                  },
+                    "geometry": {
+                    "type": "Point",
+                    "coordinates": [-0.1288604999999734, 51.507909]
+                  }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Lights for Rights! - Brussels Women's March</strong><p>Place de la Monnaie, Brussels, Belgium - January 20, 2017 - 5:00 PM CET</p>",
+                        "icon": "triangle"
+                  },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4.3517, 50.8503]
+                  }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>The Official Animal Rights March</strong><p>September 2, 2017 - The Flatiron Building, 949 Broadway (23rd Street), New York - 2pm EST</p>",
+                        "icon": "circle"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-73.935242, 40.730610]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Stop Brexit March and Rally</strong><p>September 24, 2017 - 1:00 to 5:00pm BST - Starting at The Level, Brighton</p>",
+                        "icon": "star"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-0.13325209999993604, 50.8310776]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Quarterly Hanauma Bay Cleanup</strong><p>100 Hanauma Bay Rd Honolulu, Hawaii, 96825 - September 2, 2017 - 8:30am to 10:30am HADT</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-157.6971153, 21.2735017]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Taking the Stage, Taking a Stand: LGBTQ Voices Against Violence</strong><p>14th St, Washington DC - September 13, 2017 - 7:00pm to 9:00pm EST</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-77.0325489, 38.9175705]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>2017 Soil Not Oil International Conference</strong><p>403 Civic Center Plaza Richmond, California - September 6, 2017 to September 9, 2017 - 6:00PM Sep 6 to 10:00 PM Sep 9 PST</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-122.34405630000003, 37.9369231]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Toowoomba Marches for Equality</strong><p>Toowooomba, Australia - September 8, 2017 - 4 PM UTC</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [151.9538600, -27.5605600]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>March To End Rape Culture</strong><p>1401 John F Kennedy Blvd, Philadelphia, Pennsylvania - September 30, 2017 - 11:00am to 3:00pm EST</p>",
+                        "icon": "star"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-75.16439909999997, 39.9541298]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Healthcare and Human Rights Rally</strong><p>107 N Main St Rm 204, Concord, New Hampshire - September 16, 2017 - 5:30pm to 8:30pm EST</p>",
+                        "icon": "star"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-71.53697269999998, 43.20738009999999]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>St. Petersburg Queer Culture Festival</strong><p>St.Petersburg, Russia - September 14, 2017 to September 24, 2017</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [30.335098600000038, 59.9342802]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>State-Wide Human Chain Against Domestic Violence</strong><p>Huntsville, Alabama - October 8, 2017 - 2:00pm to 3:00pm</p>",
+                        "icon": "star"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-86.6107106, 34.6939733]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>40 Days for Choice - Pro-Choice Rally</strong><p>8645 Connecticut Street, Merillville, Indiana - September 27, 2017 6:30pm to October 10, 2017, 12:00 pm</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.33260 , 41.4615047]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Coastal Cleanup Day</strong><p>Half Moon Bay, California - September 16, 2017 - 9:00am to 12:00pm PT</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-122.42858619999998, 37.4635519]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Human Trafficking Training for Counselors</strong><p>918 Ludington Mall, Detroit, Michigan - September 23, 2017 - 9:00am to 1:00pm UTC</p>",
+                        "icon": "star"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-83.0665462, 42.3591388]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>21st Annual Sierra AIDS Walk</strong><p>1168 Booster Way, Angels Camp, California - September 16, 2017 - 9:00am to 4:00pm PT</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-120.53958399999999, 38.072328]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Black Lives Matter Austin - Neighborhood Canvassing</strong><p>1201 E Rundberg Ln, Austin, Texas - September 2, 2017 - 10:00am to 12:00pm UTC</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-97.68205360000002, 30.3525876]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Counterprotest Against White Supremacy</strong><p>Wooldridge Road, Corpus Christi, Texas - September 2, 2017 - 7:00am to 10:45 am UTC</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-97.396381, 27.8005828]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Storytelling Strategies for Dismantling Racism</strong><p>1660 S Roberto Maestas Festival Street, Seattle, Washington - September 14, 2017 - 9:30am to 4:30pm PT</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-122.31095419999997, 47.5796226]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Protest Hollywood Hate Symbols</strong><p>2600 Hollywood Blvd, Hollywood, Florida - September 23, 2017 - 12:30pm – 3:30pm BST</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-80.142967, 26.011280]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Global March for Elephants, Rhinos, Lions</strong><p>Seattle Center Broad Street Garden, Seattle, Washington - October 7, 2017 - 11:00pm to 2:00pm PDT</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-122.3521746, 47.6222833]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Protest Enviva: Forests Not Fuel!</strong><p>Sheraton Hotel, 1 Festival Square, Edinburgh, Scotland - October 4, 2017 - 12:30pm to 2:00pm BST</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-3.207610700000032, 55.9470852]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Cambridge Coach To Take Back Manchester</strong><p>The Backs, Queens' Road, Cambridge, England - October 1, 2017 - 8:30am to 5:00pm BST</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [0.11293049999994764, 52.202986]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Student's March on Washington</strong><p>900 Ohio Dr, Washington, DC - September 30, 2017 - 10:00am to 1:00pm EST</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-77.03255949999999, 38.8817342]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Hold My Hand: Peaceful Protest Against Domestic Abuse</strong><p>Stratford, London - September 23, 2017 - 12:30pm to 3:30pm BST</p>",
+                        "icon": "star"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-0.0003788999999869702, 51.5413204]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Austin Pride Celebration</strong><p>2101 Jesse E Segovia St, Austin, Texas - August 26, 2017 - 11:00am to 11:00pm CDT</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-97.72474690000001, 30.2495998]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Statewide Strike & Youth Rally Against Hate</strong><p>Texas State Capitol, 1100 Congress Ave, Austin, Texas - September 1, 2017 - 12:00pm to 2:00pm CDT</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-97.74035049999998, 30.2746652]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Missha Boycott: March Against Violence In Our Communities</strong><p>Missha Beauty Supply, 642 E 47th St, Chicago, Illinois - August 26, 2017 - 2:00pm to 6:00pm CDT</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.6096857, 41.8097576]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Indivisible March for Resistance & 19th Amendment</strong><p>100 N Capitol Ave, Lansing, Michigan - Aug 26, 2017 - 1:00pm to 5:00 PM EDT</p>",
+                        "icon": "star"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-84.55534849999998, 42.7336102]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>March In Memory of African Immigrants Killed by Police</strong><p>9th and Chicon, Austin, Texas - September 1, 2017 - 12:00pm to 2:00pm CDT</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-97.7213774, 30.264186]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>International Rally in Denmark</strong><p>Fruerlundparken, Fruerlundvej, Hadsund, Denmark - August 17 at 9:00am to August 20 at 10:00am CET</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [10.1168200, 56.7214]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Stand Against Hate - A Rally For The Victims Of Charlottesville</strong><p>Springwood Park, Asbury Park, New Jersey - August 27, 2017 - 11:00am to 2:00pm EST</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-74.012085, 40.220390]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Get Outta Jersey: Trump Eviction Notice Rally</strong><p>65 Bay St, Jersey City, New Jersey - August, 21, 2017 - 11:00am EST</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-74.0776, 40.7282]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Boston Freedom Rally</strong><p>Boston Common, 139 Tremont Street, Boston, Massachusetts - September, 15 at 3:00pm to September 17 at 6:00pm EST</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-71.057083, 42.361145]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Peace Rally</strong><p>173rd Street and Hillside Avenue Hillside Ave, Jamaica, New York - August 27, 2017 - 4:00pm to 6:00pm EST</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-73.7890, 40.7027]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Rally in Bear Valley - Support Pennsylvania Firefighters</strong><p>Bear Valley Road, Valley View, Pennsylvania - August 26, 2017 - 9:00am to 4:00pm</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-76.5391, 40.6459, ]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>US Embassy Racism Protest</strong><p>US Embassy Ottawa, 490 Sussex Drive, Ottawa, Ontario - August 22, 2017 - 12:00pm to 2:00pm UTC</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-85.3232, 51.2538]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>You Can’t Fire the Truth: A NYC Protest in Support of Mueller</strong><p>Times Square, New York - December 31, 2017 - 5:00pm to 10:00pm EST</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-73.9851, 40.7589]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Protest Against Pesticides</strong><p>Sheep Meadow, Central Park, New York - September 10, 2017 - 12:00pm to 4:00pm EST</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-73.9654, 40.7829]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Protest Google Censorship</strong><p>Auckland City Waterfront, Auckland City, New Zealand - August 26, 2017 - 1:00pm to 4:00pm UTC</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [174.7633, -36.8485]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Popular Front Against Student Debt and High Tuition</strong><p>2301 Central Ave NE, Albuquerque, New Mexico - August 28, 2017 - 1:00pm to 4:00pm UTC</p>",
+                        "icon": "square"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-106.6197449, 35.0814723]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Women's Equality Day March</strong><p>Terre Haute, Indiana - August 28, 2017 - 5:00pm to 8:00pm UTC</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.32149079999999, 39.5590968]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>SHETalks WETalk Seattle</strong><p>1201 3rd Ave, Seattle, Washington - August 26, 2017 - August 27, 2017</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-122.33609289999998, 47.6072826]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Stand with Women and Families: Women's Equality Day March</strong><p>318 Blackwell St, Durham, North Carolina -  August 26, 2017 - 9:30am to 1:00pm UTC</p>",
+                        "icon": "triangle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-78.90446380000003, 35.993246]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Wisconsin Bat Festival</strong><p>Mitchell Park Conservancy, Wisconsin - August 26, 2017 - 9:00am to 5:00pm UTC</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.94594819999998, 43.0264365]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Paddle Out to Ban Plastics</strong><p>3321 Bridge Plaza Dr, Vero Beach, Florida - August 26, 2017 - 9:00am to 10:00am UTC</p>",
+                        "icon": "circle"
+                        },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-80.37044249999997, 27.6528052]
+                    }
+                // }, {
+                //     "type": "Feature",
+                //     "properties": {
+                //         "description": "<strong></strong><p></p>",
+                //         "icon": "star"
+                //         },
+                //     "geometry": {
+                //         "type": "Point",
+                //         "coordinates": []
+                //     }
+                // }, {
+                //     "type": "Feature",
+                //     "properties": {
+                //         "description": "<strong></strong><p></p>",
+                //         "icon": "star"
+                //         },
+                //     "geometry": {
+                //         "type": "Point",
+                //         "coordinates": []
+                //     }
+                // }, {
+                //     "type": "Feature",
+                //     "properties": {
+                //         "description": "<strong></strong><p></p>",
+                //         "icon": "star"
+                //         },
+                //     "geometry": {
+                //         "type": "Point",
+                //         "coordinates": []
+                //     }
+                // }, {
+                //     "type": "Feature",
+                //     "properties": {
+                //         "description": "<strong></strong><p></p>",
+                //         "icon": "star"
+                //         },
+                //     "geometry": {
+                //         "type": "Point",
+                //         "coordinates": []
+                //     }
+                }]
+            }
+        },
+        "layout": {
+            "icon-image": "{icon}-15",
+            "icon-allow-overlap": true
+        }
+    });
+
+    // When a click event occurs on a feature in the places layer, open a popup at the
+    // location of the feature, with description HTML from its properties.
+    map.on('click', 'places', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.features[0].geometry.coordinates)
+            .setHTML(e.features[0].properties.description)
+            .addTo(map);
+    });
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'places', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'places', function () {
+        map.getCanvas().style.cursor = '';
+    });
+});
+map.addControl(new mapboxgl.NavigationControl());
+</script>
+<div class="key" style="width:100%;">
+<table style="margin: 0 auto;">
+  <tr>
+    <td>Star</td><br>
+    <td>Triangle</td>
+    <td>Circle</td>
+    <td>Square</td>
+  </tr>
+  <tr>
+    <td>--Human Rights--</td>
+    <td>--Civil Rights--</td>
+    <td>--Environment--</td>
+    <td>--Other--</td><
+  </tr>
+</table>
+</div>
+</body>
+</html>
